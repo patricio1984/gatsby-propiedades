@@ -1,6 +1,26 @@
 module.exports = {
   siteMetadata: {
-    title: "My Gatsby Site",
+    title: "Sitio de Bienes Raices en Gatsby",
   },
-  plugins: ["gatsby-plugin-emotion"],
+  plugins: [
+    "gatsby-plugin-emotion",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: "http://localhost:1337",
+        queryLimit: 1000,
+        contentTypes: ["propiedades", "paginas", "categorias"],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+  ],
 }

@@ -10,8 +10,9 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL:
-          "https://salty-river-77166.herokuapp.com" || "http://localhost:1337",
+        apiURL: process.env.DEPLOY_URL
+          ? "https://salty-river-77166.herokuapp.com"
+          : "http://localhost:1337",
         queryLimit: 1000,
         contentTypes: ["propiedades", "paginas", "categorias"],
       },
